@@ -30,8 +30,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     var showSplashScreen = true
-    @Inject
-    lateinit var foodApi: FoodApi
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().apply {
             setKeepOnScreenCondition {
@@ -79,9 +78,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        if (::foodApi.isInitialized) {
-            Log.d("MainActivity", "FoodApi initialized")
-        }
+
         CoroutineScope(Dispatchers.IO).launch {
             delay(3000)
             showSplashScreen = false
