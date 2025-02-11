@@ -41,6 +41,8 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kelineyt.foodhub_android.R
+import com.kelineyt.foodhub_android.ui.auth.widget.GroupSocialButton
+import com.kelineyt.foodhub_android.ui.theme.DarkBlue
 import com.kelineyt.foodhub_android.ui.theme.Orange
 
 
@@ -53,9 +55,9 @@ fun AuthScreen() {
     val brush = Brush.verticalGradient(
         colors = listOf(
             Color.Transparent,
-            Color.Black
+            DarkBlue
         ),
-        startY = imageSize.value.height.toFloat() / 3
+        startY = imageSize.value.height.toFloat() / 6
     )
     Box(
         modifier = Modifier
@@ -81,12 +83,13 @@ fun AuthScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = 20.dp, horizontal = 16.dp)
+                .padding(vertical = 28.dp, horizontal = 16.dp)
         ) {
             Button(
                 onClick = {},
                 modifier = Modifier
-                    .align(alignment = Alignment.TopEnd),
+                    .align(alignment = Alignment.TopEnd)
+                    .padding(top = 36.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White)
             ) {
                 Text(text = stringResource(id = R.string.skip), color = Orange)
@@ -95,23 +98,23 @@ fun AuthScreen() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 120.dp)
+                    .padding(top = 130.dp)
             ) {
                 Text(
                     text = stringResource(id = R.string.welcome_to),
-                    fontSize = 50.sp,
+                    fontSize = 48.sp,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
                     text = stringResource(id = R.string.food_hub),
-                    fontSize = 50.sp,
+                    fontSize = 48.sp,
                     fontWeight = FontWeight.Bold,
                     color = Orange,
                 )
                 Text(
                     modifier = Modifier.padding(vertical = 10.dp),
                     text = stringResource(id = R.string.food_hub_des),
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     color = Color.DarkGray,
                 )
             }
@@ -122,77 +125,7 @@ fun AuthScreen() {
                     .align(Alignment.BottomEnd),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 12.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(1.dp)
-                            .background(Color.White.copy(alpha = .8f))
-                    )
-                    Text(
-                        text = stringResource(id = R.string.sign_in_with),
-                        color = Color.White,
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(1.dp)
-                            .background(Color.White.copy(alpha = .8f))
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 18.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween // Add this line
-                ) {
-                    Button(
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                        onClick = {
-
-                        },
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Image(
-                                painter = painterResource(R.drawable.ic_facebook),
-                                contentDescription = null
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = stringResource(R.string.facebook).uppercase(),
-                                color = Color.Black,
-                                fontWeight = FontWeight.Normal
-                            )
-                        }
-                    }
-
-                    Button(
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                        onClick = {
-
-                        },
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Image(
-                                painter = painterResource(R.drawable.ic_google),
-                                contentDescription = null
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = stringResource(R.string.google).uppercase(),
-                                color = Color.Black,
-                                fontWeight = FontWeight.Normal
-                            )
-                        }
-                    }
-                }
+                GroupSocialButton()
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -211,7 +144,8 @@ fun AuthScreen() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 18.dp),
-                    horizontalArrangement = Arrangement.Center // Align text in center
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
                         text = stringResource(id = R.string.already_have_account),
